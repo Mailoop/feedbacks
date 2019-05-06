@@ -1,0 +1,380 @@
+﻿/* Common app styling */
+
+.header {
+    background: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px; /* Fixed header height */
+    overflow: hidden; /* Disable scrollbars for header */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#content-header {
+    color: black;
+    z-index: 2;
+}
+
+#header-overlay {
+	color: white;
+	opacity: 0;
+	z-index: 1;
+	transition: all ease 0.3s;
+}
+
+.header-item {
+    flex: 0 1 30px;
+    margin: 0 5px;
+}
+
+.text-center {
+	text-align: center;
+}
+
+#subtitle {
+    margin: 5px 0;
+    font-size: 17px;
+    width: 90%;
+    text-align: center;
+}
+
+.toggle-switch {
+    flex: 1 1 auto;
+    margin-bottom: 0px;
+}
+
+.toggle-switch .ms-Label {
+    width: 250px;
+    top: 0px!important;
+}
+
+.icon {
+	color: black;
+    font-size: 25px;
+}
+
+#content-header .icon {
+    cursor: pointer;
+    transition: all ease 0.08s;
+}
+
+.icon.disabled {
+    color: lightgrey;
+}
+
+#content-header .icon:hover {
+    transform: scale(1.25);
+}
+
+.emoji-family {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding-top: 10px;
+    border-top: 1px solid DarkGray;
+    text-align: center;
+}
+
+#dashboard-div{
+    transition: all ease 0.1s;
+    cursor: pointer;
+}
+
+#dashboard-div:hover {
+  
+}
+
+#dashboard {
+        color: white;
+        opacity: 1;
+        font-size: 25px;
+}
+
+.main {
+    background-color: whitesmoke;
+    position: fixed;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    bottom: 0px; /* Same value as #content-footer's height */
+    overflow: auto; /* Enable scrollbars within main content section */
+    padding: 3px 10px 10px 10px;
+    transition: all ease 0.5s;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#content-main {
+	z-index: 4;
+}
+
+#content-settings {
+	z-index: 2;
+}
+
+#product-choice {
+    z-index: 3;
+}
+
+#opposition {
+	z-index: 1;
+}
+
+#loading {
+	z-index: 1000;
+	opacity: 1;
+	justify-content: center;
+}
+
+.product-card {
+    flex: 0 1 100px;
+    margin: 10px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    width: 90%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid lightgrey;
+    transition: all ease 0.2s;
+}
+
+.product-card:hover {
+    border: 1px solid #EC7D31;
+    box-shadow: 0px 0px 3px 0px #EC7D31;
+    color: #EC7D31;
+}
+
+.product-card.active {
+	border: 1px solid #EC7D31;
+    box-shadow: 0px 0px 3px 0px #EC7D31;
+}
+
+.card-item {
+    flex: 1 1 auto;
+}
+
+.card-content {
+	flex: 1 0 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.product-card i {
+	flex: 0 0 20px;
+}
+
+.card-content img {
+	flex: 1 1 auto;
+    height: 30px;
+}
+
+.card-content h2 {
+	flex: 1 1 auto;
+    margin: 5px 0;
+}
+
+.card-content p {
+	flex: 1 1 auto;
+	max-width: 100%;
+    margin: 5px 0;
+    text-align: center;
+}
+
+#content-settings p {
+    flex: 0 0 100px;
+    width: 90%;
+    text-align: center;
+    font-size: 14px;
+    font-style: oblique;
+}
+
+#content-settings h1 {
+    width: 90%;
+    flex: 0 0 25px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 17px;
+}
+
+#active-days {
+    flex: 0 0 60px;
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 10px 0;
+}
+
+#active-hours {
+    flex: 0 0 60px;
+    width: 90%;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#active-hours div {
+	flex: 1 1 auto;
+}
+
+#active-hours label {
+	flex: 1 1 auto;
+}
+
+#deconnexion-button {
+	margin-top: 10px;
+	flex: 0 0 50px;
+}
+
+#deconnexion-settings {
+    flex: 1 0 50px;
+    width: 90%;
+    margin: 10px 0;
+}
+
+#active-days .ms-CheckBox {
+    flex: 0 0 35px;
+}
+
+#active-days .ms-Label {
+    width: 20px;
+    position: absolute;
+    top: 20px!important;
+    left: -20px;
+}
+
+#content-main .comment {
+    width: 100%;
+}
+
+#content-params {
+    background-color: whitesmoke;
+    position: fixed;
+    top: 40px;
+    left: 100%;
+    width: 100%;
+    bottom: 35px; /* Same value as #content-footer's height */
+    overflow: auto; /* Enable scrollbars within main content section */
+    padding: 3px 10px 3px 10px;
+    transition: all ease 0.5s;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.padding {
+    padding: 15px;
+}
+
+.margin-top {
+    margin-top: 10px;
+}
+
+#notification-message {
+    background-color: #818285;
+    color: #fff;
+    position: absolute;
+    width: 100%;
+    min-height: 80px;
+    right: 0;
+    z-index: 100;
+    bottom: 0;
+    display: none; /* Hidden until invoked */
+}
+
+#notification-message #notification-message-header {
+    font-size: medium;
+    margin-bottom: 10px;
+}
+
+#notification-message #notification-message-close {
+    background-image: url("Assets/Images/Close.png");
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.padding-top {
+    padding-top: 5px;
+}
+
+.vote-element {
+    flex: 1 0 27px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    cursor: pointer;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    transition: all ease 0.2s;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.vote-element.positive:hover {
+    border: 1px solid #98ca08;
+    box-shadow: 0px 0px 3px 0px #98ca08;
+}
+
+.vote-element.neutral:hover {
+	border: 1px solid #FEBF00;
+    box-shadow: 0px 0px 3px 0px #FEBF00;
+}
+
+.vote-element.negative:hover {
+	border: 1px solid #BF0000;
+    box-shadow: 0px 0px 3px 0px #BF0000;
+}
+
+.vote-element img {
+    height: 32px;
+    width: 32px;
+    margin-left: 5px;
+    margin-right: 10px;
+}
+
+.vote-element p {
+	margin: 0px;
+}
+
+.check {
+    position: relative;
+    opacity: 0;
+    top: 0px;
+    left: -100%;
+    transition: all ease 0.2s;
+}
+
+.check.voted {
+    left: -5px;
+    opacity: 1;
+}
+
+p {
+    flex: 1 1 auto;
+}
+

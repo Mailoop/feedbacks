@@ -1,0 +1,219 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See full license at the bottom of this file. -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <title></title>
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js" type="text/javascript"></script>
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+
+<!--   <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/4.1.0/css/fabric.min.css"> -->
+
+  <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/css/fabric.min.css" />
+  <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/css/fabric.components.min.css" />
+  <script src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/js/fabric.min.js"></script>
+
+  <link href="../App.css" rel="stylesheet" type="text/css" />
+  <script src="../App.js" type="text/javascript"></script>
+
+  <script src="MailRead.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="header" id="content-header">
+        <div class="ms-Toggle header-item toggle-switch" id="smartdeco-switch" title="Activer pour couper automatiquement les notifications en dehors de vos horaires" >
+          <input type="checkbox" id="demo-toggle-3" class="ms-Toggle-input" />
+          <label for="demo-toggle-3" class="ms-Toggle-field" tabindex="0" id="smartdeco">
+            <span class="ms-Label ms-Label--off">Smart Deconnexion OFF</span> 
+            <span class="ms-Label ms-Label--on">Smart Deconnexion ON</span> 
+          </label>
+        </div>
+        <div class="header-item disabled" title="Accédez à votre tableau de bord personnel" id="dashboard">
+            <i class="icon ms-Icon ms-Icon--Financial" aria-hidden="true"></i>
+        </div>
+        <!-- <div class="header-item" title="Paramètres de déconnexion" id="settings">
+            <i class="icon ms-Icon ms-Icon--Settings" aria-hidden="true"></i>
+        </div> -->
+    </div>
+    <div class="header" id="header-overlay" title="Options indisponibles">
+    </div>
+    <div class="main" id="content-main">
+    </div>
+    <div class="main" id="content-settings">
+      <h1 class="ms-font-l ms-fontWeight-semibold" id="subtitle">Réglez vos préférences de déconnexion</h1>
+      <p class="ms-font-l ms-fontWeight-light">Mailoop coupe vos notifications automatiquement. Vous avez toujours accès à vos e-mails. Désactivez la Smart Déconnexion à tout moment.</p>
+      <h1 class="ms-font-l ms-fontWeight-semibold" id="subtitle">Mes jours de travail</h1>
+      <div id="active-days">
+        <div class="ms-CheckBox">
+          <input tabindex="-1" type="checkbox" class="ms-CheckBox-input">
+          <label role="checkbox" class="ms-CheckBox-field" tabindex="0" aria-checked="false" name="checkboxa" id="1">
+            <span class="ms-Label">L</span> 
+          </label>
+        </div>
+        <div class="ms-CheckBox">
+          <input tabindex="-1" type="checkbox" class="ms-CheckBox-input">
+          <label role="checkbox" class="ms-CheckBox-field" tabindex="1" aria-checked="false" name="checkboxa" id="2">
+            <span class="ms-Label">M</span> 
+          </label>
+        </div>
+        <div class="ms-CheckBox">
+          <input tabindex="-1" type="checkbox" class="ms-CheckBox-input">
+          <label role="checkbox" class="ms-CheckBox-field" tabindex="2" aria-checked="false" name="checkboxa" id="3">
+            <span class="ms-Label">M</span> 
+          </label>
+        </div>
+        <div class="ms-CheckBox">
+          <input tabindex="-1" type="checkbox" class="ms-CheckBox-input">
+          <label role="checkbox" class="ms-CheckBox-field" tabindex="2" aria-checked="false" name="checkboxa" id="4">
+            <span class="ms-Label">J</span> 
+          </label>
+        </div>
+        <div class="ms-CheckBox">
+          <input tabindex="-1" type="checkbox" class="ms-CheckBox-input">
+          <label role="checkbox" class="ms-CheckBox-field" tabindex="2" aria-checked="false" name="checkboxa" id="5">
+            <span class="ms-Label">V</span> 
+          </label>
+        </div>
+        <div class="ms-CheckBox">
+          <input tabindex="-1" type="checkbox" class="ms-CheckBox-input">
+          <label role="checkbox" class="ms-CheckBox-field" tabindex="2" aria-checked="false" name="checkboxa" id="6">
+            <span class="ms-Label">S</span> 
+          </label>
+        </div>
+        <div class="ms-CheckBox">
+          <input tabindex="-1" type="checkbox" class="ms-CheckBox-input">
+          <label role="checkbox" class="ms-CheckBox-field" tabindex="2" aria-checked="false" name="checkboxa"  id="0">
+            <span class="ms-Label">D</span> 
+          </label>
+        </div>
+      </div>
+      <h1 class="ms-font-l ms-fontWeight-semibold" id="subtitle">Mes horaires de connexion</h1>
+      <div id="active-hours">
+        <label class="ms-Label" for="start-time">Début</label>
+        <div id="start-time">
+          <select>
+            <option value="7">7:00</option>
+            <option value="7.5">7:30</option>
+            <option value="8">8:00</option>
+            <option value="8.5">8:30</option>
+            <option value="9">9:00</option>
+            <option value="9.5">9:30</option>
+            <option value="10">10:00</option>
+          </select>
+        </div>
+        <label class="ms-Label" for="start-time">Fin</label>
+        <div id="end-time">
+          <select>
+            <option value="16">16:00</option>
+            <option value="16.5">16:30</option>
+            <option value="17">17:00</option>
+            <option value="17.5">17:30</option>
+            <option value="18">18:00</option>
+            <option value="18.5">18:30</option>
+            <option value="19">19:00</option>
+            <option value="19.5">19:30</option>
+            <option value="20">20:00</option>
+          </select>
+        </div>
+      </div>
+      <h1 class="ms-font-l ms-fontWeight-semibold" id="subtitle">Mes temps de Smart Deconnexion</h1>
+      <div id="deconnexion-settings">
+        <div class="ms-Toggle header-item margin-top toggle-switch" id="night-switch" title="Activer pour couper automatiquement les notifications en dehors de vos horaires" >
+          <input type="checkbox" id="demo-toggle-3" class="ms-Toggle-input" />
+          <label for="demo-toggle-3" class="ms-Toggle-field" tabindex="0" id="nights">
+            <span class="ms-Label ms-Label--off">Notifications la nuit</span> 
+            <span class="ms-Label ms-Label--on">Pas de notifications la nuit</span> 
+          </label>
+        </div>
+        <div class="ms-Toggle header-item margin-top toggle-switch" id="weekend-switch" title="Activer pour couper automatiquement les notifications en dehors de vos horaires" >
+          <input type="checkbox" id="demo-toggle-3" class="ms-Toggle-input" />
+          <label for="demo-toggle-3" class="ms-Toggle-field" tabindex="0" id="weekends">
+            <span class="ms-Label ms-Label--off">Notifications les week-ends</span> 
+            <span class="ms-Label ms-Label--on">Pas de notifications les week-ends</span> 
+          </label>
+        </div>
+        <div class="ms-Toggle header-item margin-top toggle-switch" id="vacation-switch" title="Activer pour couper automatiquement les notifications en dehors de vos horaires" >
+          <input type="checkbox" id="demo-toggle-3" class="ms-Toggle-input" />
+          <label for="demo-toggle-3" class="ms-Toggle-field" tabindex="0" id="vacations">
+            <span class="ms-Label ms-Label--off">Notification pendant mes vacances</span> 
+            <span class="ms-Label ms-Label--on">Pas de notifications pendant mes vacances</span> 
+          </label>
+        </div>
+      </div>
+      <div id="deconnexion-button">
+        <button class="ms-Button ms-Button--primary">
+          <span class="ms-Button-label">Mettre à jour</span> 
+        </button>
+      </div>
+    </div>
+    <div class="main" id="product-choice">
+      <h1 class="ms-font-l ms-fontWeight-semibold" id="subtitle">Choisissez la solution Mailoop qui vous convient.</h1>
+      <div class="product-card product-feedback product-analytics product-smartdeconnexion" id="product-feedback">
+        <div class="card-content">
+          <img src="https://mailoop.blob.core.windows.net/assets/productchoice/feedback360.png">
+          <h2 class="ms-font-l ms-fontWeight-semibold">Feedback</h2>
+          <p class="ms-font-m">Partagez anonymement votre ressenti et prenez conscience de votre impact.</p>
+        </div>
+        <i class="ms-Icon ms-Icon--CaretRightSolid8" aria-hidden="true"></i>
+      </div>
+      <div class="product-card product-smartdeconnexion product-analytics" id="product-analytics" title="Une page Microsoft va s'ouvrir pour accorder les droits à Mailoop">
+        <div class="card-content">
+          <img src="https://mailoop.blob.core.windows.net/assets/productchoice/analytics.png">
+          <h2 class="ms-font-l ms-fontWeight-semibold">Feedback + Analytics</h2>
+          <p class="ms-font-m">Suivez en continu vos statistiques pour mesurer vos progrès.</p>
+        </div>
+        <i class="ms-Icon ms-Icon--CaretRightSolid8" aria-hidden="true"></i>
+      </div>
+      <div class="product-card product-smartdeconnexion" id="product-smartdeconnexion" title="Une page Microsoft va s'ouvrir pour accorder les droits à Mailoop">
+        <div class="card-content">
+          <img src="https://mailoop.blob.core.windows.net/assets/productchoice/smart_deconnexion.png">
+          <h2 class="ms-font-l ms-fontWeight-semibold">Feedback + Analytics</h2>
+          <p class="ms-font-m">Accéder à l'expérience Mailoop en donnant votre consentement</p>
+        </div>
+        <i class="ms-Icon ms-Icon--CaretRightSolid8" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div class="main" id="opposition">
+      <h1 class= "ms-font-xl ms-fontWeight-semibold">Vous avez exercé votre droit d'opposition.</h1>
+      <h1 class= "ms-font-l">Les feedbacks vous concernant ont été anonymisés. Vous ne pouvez plus en émettre ni en recevoir.</h1>
+      <h1 class= "ms-font-l">Il n'est jamais trop tard pour revenir dans la partie !</h1>
+      <div id="opposition-button">
+        <button class="ms-Button ms-Button--primary">
+          <span class="ms-Button-label">Revenir !</span> 
+        </button>
+      </div>
+    </div>
+    <div class="main" id="loading">
+      <div class="ms-Spinner ms-Spinner--large">
+        <div class="ms-Spinner-label">
+          Chargement...
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      
+    </script>
+</body>
+</html>
+
+<!-- MIT License:
+
+ Permission is hereby granted, free of charge, to any person obtaining
+ a copy of this software and associated documentation files (the
+ ""Software""), to deal in the Software without restriction, including
+ without limitation the rights to use, copy, modify, merge, publish,
+ distribute, sublicense, and/or sell copies of the Software, and to
+ permit persons to whom the Software is furnished to do so, subject to
+ the following conditions:
+
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->

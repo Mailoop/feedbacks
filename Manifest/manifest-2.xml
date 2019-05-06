@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp
+          xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+          xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0"
+          xsi:type="MailApp">
+
+  <!-- Begin Basic Settings: Add-in metadata, used for all versions of Office unless override provided. -->
+
+  <!-- IMPORTANT! Id must be unique for your add-in, if you reuse this manifest ensure that you change this id to a new GUID. -->
+
+  <Id>52137bd1-d94d-4550-9268-9c77498291ee</Id>
+
+  <!--Version. Updates from the store only get triggered if there is a version change. -->
+  <Version>3.1.0.0</Version>
+  <ProviderName>Wellbee</ProviderName>
+  <DefaultLocale>fr-FR</DefaultLocale>
+  <!-- The display name of your add-in. Used on the store and various places of the Office UI such as the add-ins dialog. -->
+  <DisplayName DefaultValue="Mailoop Normandie" />
+  <Description DefaultValue="La première solution d'amélioration continue de l'usage de l'e-mail en entreprise."/>
+
+  <!-- Icon for your add-in. Used on installation screens and the add-ins dialog. -->
+  <IconUrl DefaultValue="https://mailoop.blob.core.windows.net/assets/mailoop_icon_2_64.png" />
+
+  <HighResolutionIconUrl DefaultValue="https://mailoop.blob.core.windows.net/assets/mailoop_icon_2_80.png"/>
+
+  <!--If you plan to submit this add-in to the Office Store, uncomment the SupportUrl element below-->
+  <SupportUrl DefaultValue="https://feedback-email-outlook.mailoop.com/mode_demploi.pdf" />
+
+  <!-- Domains that will be allowed when navigating. For example, if you use ShowTaskpane and then have an href link, navigation will only be allowed if the domain is on this list. -->
+  <AppDomains>
+    <AppDomain>https://app.mailoop.com</AppDomain>
+    <AppDomain>https://dashboard.mailoop.com</AppDomain>
+    <AppDomain>https://feedback-email-outlook.mailoop.com</AppDomain>
+    <AppDomain>https://mailoop.blob.core.windows.net</AppDomain>
+  </AppDomains>
+  <!--End Basic Settings. -->
+
+  <Hosts>
+    <Host Name="Mailbox" />
+  </Hosts>
+  <Requirements>
+    <Sets>
+      <Set Name="Mailbox" MinVersion="1.1" />
+    </Sets>
+  </Requirements>
+
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://mailoop.blob.core.windows.net/normandie/MailRead/MailRead.html" />
+        <RequestedHeight>450</RequestedHeight>
+      </DesktopSettings>
+      <TabletSettings>
+        <SourceLocation DefaultValue="https://mailoop.blob.core.windows.net/normandie/MailRead/MailRead.html" />
+        <RequestedHeight>450</RequestedHeight>
+      </TabletSettings>
+      <PhoneSettings>
+        <SourceLocation DefaultValue="https://mailoop.blob.core.windows.net/normandie/MailRead/MailRead.html" />
+      </PhoneSettings>
+    </Form>
+  </FormSettings>
+
+  <Permissions>ReadItem</Permissions>
+  <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read" />
+  <DisableEntityHighlighting>false</DisableEntityHighlighting>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Requirements>
+      <bt:Sets DefaultMinVersion="1.3">
+        <bt:Set Name="Mailbox" />
+      </bt:Sets>
+    </Requirements>
+    <Hosts>
+      <Host xsi:type="MailHost">
+
+        <DesktopFormFactor>
+
+          <!-- Message Read -->
+          <ExtensionPoint xsi:type="MessageReadCommandSurface">
+            <OfficeTab id="TabDefault">
+              <Group id="msgReadGroup">
+                <Label resid="groupLabel" />
+                <!-- Launch the add-in : task pane button -->
+                <Control xsi:type="Button" id="msgReadOpenPaneButton">
+                  <Label resid="paneReadButtonLabel" />
+                  <Supertip>
+                    <Title resid="paneReadSuperTipTitle" />
+                    <Description resid="paneReadSuperTipDescription" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="icon16" />
+                    <bt:Image size="32" resid="icon32" />
+                    <bt:Image size="80" resid="icon80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="messageReadTaskPaneUrl" />
+                  </Action>
+                </Control>
+                <!-- Go to http://aka.ms/ButtonCommands to learn how to add more Controls: ExecuteFunction and Menu -->
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+          <!-- Go to http://aka.ms/ExtensionPointsCommands to learn how to add more Extension Points: MessageRead, AppointmentOrganizer, AppointmentAttendee -->
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+
+    <Resources>
+
+      <bt:Images>
+        <bt:Image id="icon16" DefaultValue="https://mailoop.blob.core.windows.net/assets/mailoop_icon_2_16.png"/>
+        <bt:Image id="icon32" DefaultValue="https://mailoop.blob.core.windows.net/assets/mailoop_icon_2_32.png"/>
+        <bt:Image id="icon80" DefaultValue="https://mailoop.blob.core.windows.net/assets/mailoop_icon_2_80.png"/>
+      </bt:Images>
+
+      <bt:Urls>
+        <bt:Url id="messageReadTaskPaneUrl" DefaultValue="https://mailoop.blob.core.windows.net/normandie/MailRead/MailRead.html"/>
+      </bt:Urls>
+
+      <bt:ShortStrings>
+        <bt:String id="groupLabel" DefaultValue="Mailoop"/>
+        <bt:String id="paneReadButtonLabel" DefaultValue="Partager avec Mailoop">
+          <bt:Override Locale="en-US" Value="Share with Mailoop" />
+          <bt:Override Locale="en-GB" Value="Share with Mailoop" />
+        </bt:String>
+        <bt:String id="paneReadSuperTipTitle" DefaultValue="Partager votre ressenti avec Mailoop">
+         <bt:Override Locale="en-US" Value="Share your feedback with Mailoop" />
+         <bt:Override Locale="en-GB" Value="Share your feedback with Mailoop" />
+        </bt:String>      
+      </bt:ShortStrings>
+      
+      <bt:LongStrings>
+        <bt:String id="paneReadSuperTipDescription" DefaultValue="Ouvrir un bandeau pour partager votre ressenti anonymement avec Mailoop">
+         <bt:Override Locale="en-US" Value="Open a new window and share anonymously your feedbacks with Mailoop" />
+         <bt:Override Locale="en-GB" Value="Open a new window and share anonymously your feedbacks with Mailoop" />
+       </bt:String>
+      </bt:LongStrings>
+    </Resources>
+
+    <!-- Version override for v1.1 schema -->
+    <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1" xsi:type="VersionOverridesV1_1">
+      <Requirements>
+        <bt:Sets DefaultMinVersion="1.3">
+          <bt:Set Name="Mailbox" />
+        </bt:Sets>
+      </Requirements>
+      <Hosts>
+        <Host xsi:type="MailHost">
+
+          <DesktopFormFactor>
+
+            <!-- Message Read -->
+            <ExtensionPoint xsi:type="MessageReadCommandSurface">
+              <OfficeTab id="TabDefault">
+                <Group id="msgReadGroup">
+                  <Label resid="groupLabel" />
+                  <!-- Launch the add-in : task pane button -->
+                  <Control xsi:type="Button" id="msgReadOpenPaneButton">
+                    <Label resid="paneReadButtonLabel" />
+                    <Supertip>
+                      <Title resid="paneReadSuperTipTitle" />
+                      <Description resid="paneReadSuperTipDescription" />
+                    </Supertip>
+                    <Icon>
+                      <bt:Image size="16" resid="icon16" />
+                      <bt:Image size="32" resid="icon32" />
+                      <bt:Image size="80" resid="icon80" />
+                    </Icon>
+                    <Action xsi:type="ShowTaskpane">
+                      <SourceLocation resid="messageReadTaskPaneUrl" />
+                      <SupportsPinning>true</SupportsPinning> 
+                    </Action>
+                  </Control>
+                  <!-- Go to http://aka.ms/ButtonCommands to learn how to add more Controls: ExecuteFunction and Menu -->
+                </Group>
+              </OfficeTab>
+            </ExtensionPoint>
+            <!-- Go to http://aka.ms/ExtensionPointsCommands to learn how to add more Extension Points: MessageRead, AppointmentOrganizer, AppointmentAttendee -->
+          </DesktopFormFactor>
+
+          <MobileFormFactor>
+           <ExtensionPoint xsi:type="MobileMessageReadCommandSurface">
+             <Group id="mobileMsgRead">
+               <Label resid="groupLabel" />
+               <Control xsi:type="MobileButton" id="mblTaskPane">
+                 <Label resid="paneReadButtonLabel" />
+                 <Icon xsi:type="bt:MobileIconList">
+                   <bt:Image size="25" scale="1" resid="icon25" />
+                   <bt:Image size="25" scale="2" resid="icon25" />
+                   <bt:Image size="25" scale="3" resid="icon25" />
+
+                   <bt:Image size="32" scale="1" resid="icon32" />
+                   <bt:Image size="32" scale="2" resid="icon32" />
+                   <bt:Image size="32" scale="3" resid="icon32" />
+
+                   <bt:Image size="48" scale="1" resid="icon48" />
+                   <bt:Image size="48" scale="2" resid="icon48" />
+                   <bt:Image size="48" scale="3" resid="icon48" />
+                 </Icon>
+                 <Action xsi:type="ShowTaskpane">
+                   <SourceLocation resid="messageReadTaskPaneUrl" />
+                 </Action>
+               </Control>
+             </Group>
+           </ExtensionPoint>
+         </MobileFormFactor>
+        </Host>
+      </Hosts>
+
+    <Resources>
+
+      <bt:Images>
+        <bt:Image id="icon16" DefaultValue="https://mailoop.blob.core.windows.net/assets/mailoop_icon_2_16.png"/>
+        <bt:Image id="icon25" DefaultValue="https://mailoop.blob.core.windows.net/assets/mailoop_icon_2_25.png"/>
+        <bt:Image id="icon32" DefaultValue="https://mailoop.blob.core.windows.net/assets/mailoop_icon_2_32.png"/>
+        <bt:Image id="icon48" DefaultValue="https://mailoop.blob.core.windows.net/assets/mailoop_icon_2_48.png"/>
+        <bt:Image id="icon80" DefaultValue="https://mailoop.blob.core.windows.net/assets/mailoop_icon_2_80.png"/>
+      </bt:Images>
+
+      <bt:Urls>
+        <bt:Url id="messageReadTaskPaneUrl" DefaultValue="https://mailoop.blob.core.windows.net/normandie/MailRead/MailRead.html"/>
+      </bt:Urls>
+
+      <bt:ShortStrings>
+        <bt:String id="groupLabel" DefaultValue="Mailoop"/>
+        <bt:String id="paneReadButtonLabel" DefaultValue="Partager avec Mailoop">
+          <bt:Override Locale="en-US" Value="Share with Mailoop" />
+          <bt:Override Locale="en-GB" Value="Share with Mailoop" />
+        </bt:String>
+        <bt:String id="paneReadSuperTipTitle" DefaultValue="Partager votre ressenti avec Mailoop">
+         <bt:Override Locale="en-US" Value="Share your feedback with Mailoop" />
+         <bt:Override Locale="en-GB" Value="Share your feedback with Mailoop" />
+        </bt:String>      
+      </bt:ShortStrings>
+      
+      <bt:LongStrings>
+        <bt:String id="paneReadSuperTipDescription" DefaultValue="Ouvrir un bandeau pour partager votre ressenti anonymement avec Mailoop">
+         <bt:Override Locale="en-US" Value="Open a new window and share anonymously your feedbacks with Mailoop" />
+         <bt:Override Locale="en-GB" Value="Open a new window and share anonymously your feedbacks with Mailoop" />
+       </bt:String>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+  </VersionOverrides>
+</OfficeApp>
